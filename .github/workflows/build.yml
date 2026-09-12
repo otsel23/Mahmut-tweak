@@ -1,0 +1,25 @@
+name: Mahmut Tweak Derle
+
+on:
+  push:
+    branches: [ "ana", "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Depoyu indir
+        uses: actions/checkout@v4
+
+      - name: Theos kur
+        uses: waruhachi/theos-action@v1
+
+      - name: Derle
+        run: make package
+
+      - name: Dosyayı yükle
+        uses: actions/upload-artifact@v4
+        with:
+          name: MahmutTweak
+          path: packages/*.deb
